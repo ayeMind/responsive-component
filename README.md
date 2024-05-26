@@ -13,6 +13,8 @@ npm install responsive-component
 ```tsx
 import { ResponsiveComponent } from 'responsive-component';
 
+// ...
+
 return (
   <>
     <ResponsiveComponent
@@ -47,6 +49,8 @@ return (
 ```tsx
 // main.tsx
 import { ResponsiveProvider } from 'responsive-component';
+
+// ...
 
 <ResponsiveProvider
     breakpoints={{
