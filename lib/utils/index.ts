@@ -1,0 +1,1 @@
+export { isCorrectBreakPoint } from './isCorrectBreakPoint'
