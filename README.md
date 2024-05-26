@@ -53,6 +53,7 @@ import { ResponsiveProvider } from 'responsive-react-component';
 // ...
 
 <ResponsiveProvider
+    // default values
     breakpoints={{
         'xs': 480,
         'sm': 768,
@@ -64,5 +65,7 @@ import { ResponsiveProvider } from 'responsive-react-component';
   <App />
 </ResponsiveProvider>
 ```
+
+
 
 
