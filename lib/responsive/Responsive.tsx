@@ -23,6 +23,11 @@ interface ResponsiveProps extends HTMLAttributes<HTMLDivElement> {
  * 
  * @example
  * ```tsx
+ * 
+ * import { Responsive } from 'responsive-react-component';
+ * 
+ *  // <...>
+ * 
  *   <Responsive hiddenFrom="md">
  *     <p>This content is visible on small screens.</p>
  *   </Responsive>

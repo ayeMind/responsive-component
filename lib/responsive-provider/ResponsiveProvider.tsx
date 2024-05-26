@@ -29,7 +29,7 @@ const ResponsiveContext = createContext<BreakPoints>({
  * @component
  * @example
  * ```
- * import { ResponsiveProvider } from './ResponsiveProvider';
+ * import { ResponsiveProvider } from 'responsive-react-component';
  *
  * <ResponsiveProvider breakpoints={{ xs: 480, sm: 768, md: 992, lg: 1200, xl: 1600, xxl: 1920 }}>
  *   <App />

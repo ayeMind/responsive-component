@@ -5,13 +5,13 @@ React library for hiding/showing content based on screen size
 ## Installation
 
 ```bash
-npm install responsive-component
+npm install responsive-react-component
 ```
 
 ## Usage
 
 ```tsx
-import { ResponsiveComponent } from 'responsive-component';
+import { ResponsiveComponent } from 'responsive-react-component';
 
 // ...
 
@@ -48,7 +48,7 @@ return (
 
 ```tsx
 // main.tsx
-import { ResponsiveProvider } from 'responsive-component';
+import { ResponsiveProvider } from 'responsive-react-component';
 
 // ...
 
