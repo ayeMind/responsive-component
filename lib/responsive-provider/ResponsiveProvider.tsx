@@ -1,7 +1,3 @@
-/*
-    Provider for setting screen sizes for breakpoints ("sm", "md", etc.)
-*/
-
 import React, { ReactNode, createContext } from "react"
 
 interface BreakPoints {
@@ -27,6 +23,22 @@ const ResponsiveContext = createContext<BreakPoints>({
     'xxl': 1920
 });
 
+/**
+ * ResponsiveProvider component to provide breakpoint values to child components.
+ *
+ * @component
+ * @example
+ * ```
+ * import { ResponsiveProvider } from './ResponsiveProvider';
+ *
+ * <ResponsiveProvider breakpoints={{ xs: 480, sm: 768, md: 992, lg: 1200, xl: 1600, xxl: 1920 }}>
+ *   <App />
+ * </ResponsiveProvider>
+ * ```
+ *
+ * @param {ResponsiveProviderProps} props - The properties for the component.
+ * @returns {React.Element} - The rendered element.
+ */
 const ResponsiveProvider: React.FC<ResponsiveProviderProps> = ({ children, breakpoints }) => {
     return (
         <ResponsiveContext.Provider value={breakpoints}>
