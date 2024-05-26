@@ -1,6 +1,6 @@
 # Responsive Component
 
-React library for hiding/showing content based on screen size
+React library for hiding/showing content based on screen width
 
 ## Installation
 
