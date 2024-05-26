@@ -10,36 +10,42 @@ npm install responsive-component
 
 ## Usage
 
-```jsx
+```tsx
 import { ResponsiveComponent } from 'responsive-component';
 
-<ResponsiveComponent
-   as='button' // default is div
-   visibleFrom='sm'>
-   I show from sm
-</ResponsiveComponent>
+return (
+  <>
+    <ResponsiveComponent
+      as='button' // default is div
+      visibleFrom='sm'>
+      I show from sm
+    </ResponsiveComponent>
 
-<ResponsiveComponent
-  hiddenFrom='md'>
-  I hide from md
-</ResponsiveComponent>
+    <ResponsiveComponent
+      hiddenFrom='md'>
+      I hide from md
+    </ResponsiveComponent>
 
-<ResponsiveComponent
-  visibleFrom='sm'
-  hiddenFrom='md'>
-  I show from sm and hide from md
-</ResponsiveComponent>
+    <ResponsiveComponent
+      visibleFrom='sm'
+      hiddenFrom='md'>
+      I show from sm and hide from md
+    </ResponsiveComponent>
 
-<ResponsiveComponent
-  visibleFrom='xl'
-  hiddenFrom='sm'>
-  I never show
-</ResponsiveComponent>
+    <ResponsiveComponent
+      visibleFrom='xl'
+      hiddenFrom='sm'>
+      I never show
+    </ResponsiveComponent>
+  </>
+)
+
 ```
 
 ## Change breakpoints values 
 
-```jsx
+```tsx
+// main.tsx
 import { ResponsiveProvider } from 'responsive-component';
 
 <ResponsiveProvider
