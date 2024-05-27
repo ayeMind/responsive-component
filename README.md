@@ -1,6 +1,8 @@
 # Responsive Component
 
-React library for hiding/showing content based on screen width
+## Overview
+
+React library for hiding/showing content based on screen size. Breakpoints can be configured.
 
 ## Installation
 
@@ -11,34 +13,40 @@ npm install responsive-react-component
 ## Usage
 
 ```tsx
-import { ResponsiveComponent } from 'responsive-react-component';
+import { Responsive } from 'responsive-react-component';
 
 // ...
 
 return (
   <>
-    <ResponsiveComponent
+    <Responsive 
       as='button' // default is div
-      visibleFrom='sm'>
+      visibleFrom='sm'> 
       I show from sm
-    </ResponsiveComponent>
+    </Responsive>
 
-    <ResponsiveComponent
+    <Responsive
       hiddenFrom='md'>
       I hide from md
-    </ResponsiveComponent>
+    </Responsive>
 
-    <ResponsiveComponent
+    <Responsive
       visibleFrom='sm'
       hiddenFrom='md'>
       I show from sm and hide from md
-    </ResponsiveComponent>
+    </Responsive>
 
-    <ResponsiveComponent
+    <Responsive
       visibleFrom='xl'
       hiddenFrom='sm'>
-      I never show
-    </ResponsiveComponent>
+      I never show 
+    </Responsive>
+
+    <Responsive
+      mediaQuery='height' // width | height, default is width
+      visibleFrom='xxl'>
+      I hide from height
+    </Responsive>
   </>
 )
 

@@ -6,9 +6,9 @@ interface ResponsiveProps extends HTMLAttributes<HTMLDivElement> {
   as?: ElementType,
   hiddenFrom?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   visibleFrom?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
+  mediaQuery?: 'width' | 'height'
   children?: React.ReactNode
 }
-
 
 /**
  * @component Responsive
@@ -19,6 +19,7 @@ interface ResponsiveProps extends HTMLAttributes<HTMLDivElement> {
  * @prop {ElementType} [as='div'] - The HTML element to render (e.g., 'div', 'section', etc.).
  * @prop {'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'} [hiddenFrom] - Hide the content when the screen size is equal to or wider than this breakpoint.
  * @prop {'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'} [visibleFrom] - Show the content only when the screen size is equal to or wider than this breakpoint.
+ * @prop {'width' | 'height'} [mediaQuery='width'] - The media query to use for hiding/showing the content.
  * @prop {ReactNode} children - The content to be conditionally rendered.
  * 
  * @example
@@ -37,22 +38,26 @@ interface ResponsiveProps extends HTMLAttributes<HTMLDivElement> {
  *   <Responsive as="button">
  *     <p>This button is visible on all screens.</p>
  *   </Responsive>
+ *   <Responsive visibleFrom="xxl" mediaQuery="height">
+ *     <p>This content is visible on tall screens.</p>
+ *   </Responsive>
+ *
  * </>
  * ```
  */
-const Responsive: React.FC<ResponsiveProps> = ({as: Tag = 'div', children, ...props}) => {
+const Responsive: React.FC<ResponsiveProps> = ({as: Tag = 'div', mediaQuery='width', children, ...props}) => {
 
   const [isVisible, setIsVisible] = useState(true);
   const breakpoints: BreakPoints = useContext(ResponsiveContext);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+  const [windowSize, setWindowSize] = useState(mediaQuery === 'width' ? window.innerWidth : window.innerHeight);
+  
   if (!breakpoints) {
     console.error('Unexpected error. No breakpoints provided');
   }
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowSize(mediaQuery === 'width' ? window.innerWidth : window.innerHeight);
     };
 
     window.addEventListener('resize', handleResize);
@@ -71,7 +76,7 @@ const Responsive: React.FC<ResponsiveProps> = ({as: Tag = 'div', children, ...pr
         return;
       }
 
-      if (breakpoints[props.hiddenFrom] < windowWidth) {
+      if (breakpoints[props.hiddenFrom] < windowSize) {
         isVisible = false;
       }
     }
@@ -83,14 +88,14 @@ const Responsive: React.FC<ResponsiveProps> = ({as: Tag = 'div', children, ...pr
         return;
       }
 
-      if (breakpoints[props.visibleFrom] > windowWidth) {
+      if (breakpoints[props.visibleFrom] > windowSize) {
         isVisible = false;
       }
     }
 
     setIsVisible(isVisible);
 
-  }, [props.hiddenFrom, props.visibleFrom, breakpoints, windowWidth]);
+  }, [props.hiddenFrom, props.visibleFrom, breakpoints, windowSize]);
 
   return isVisible ? (
     <Tag {...props}>
